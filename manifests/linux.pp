@@ -96,6 +96,16 @@ class firewall::linux (
         require      => Package['iptables'],
       }
     }
+    'SLES': {
+        ensure          => $ensure,
+        ensure_v6       => $_ensure_v6,
+        enable          => $enable,
+        enable_v6       => $_enable_v6,
+        package_name    => $package_name,
+        service_name    => $service_name,
+        service_name_v6 => $service_name_v6,
+        require         => Package['iptables'],
+    }
     default: {}
   }
 }
