@@ -31,7 +31,10 @@ class firewall::linux (
   $service_name_v6 = $::firewall::params::service_name_v6,
   $package_name    = $::firewall::params::package_name,
   $ebtables_manage = false,
-) inherits ::firewall::params {
+  ) {
+
+  include '::firewall::params'
+
   $enable = $ensure ? {
     'running' => true,
     'stopped' => false,

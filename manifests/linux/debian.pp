@@ -24,7 +24,9 @@ class firewall::linux::debian (
   $service_name   = $::firewall::params::service_name,
   $package_name   = $::firewall::params::package_name,
   $package_ensure = $::firewall::params::package_ensure,
-) inherits ::firewall::params {
+  ) {
+
+  include '::firewall::params'
 
   if $package_name {
     #Fixes hang while installing iptables-persistent on debian 8
